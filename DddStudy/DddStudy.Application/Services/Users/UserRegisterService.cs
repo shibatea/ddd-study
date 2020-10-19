@@ -1,6 +1,7 @@
 ﻿using DddStudy.Domain;
 using DddStudy.Domain.Interfaces;
 using DddStudy.Domain.Models;
+using DddStudy.Domain.Models.Users;
 
 namespace DddStudy.Application.Services.Users
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using DddStudy.Domain.Core.Models;
 
-namespace DddStudy.Domain.Models
+namespace DddStudy.Domain.Models.Users
 {
     public class UserName : ValueObject<UserName>
     {

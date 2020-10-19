@@ -1,4 +1,5 @@
 ﻿using DddStudy.Domain.Models;
+using DddStudy.Domain.Models.Users;
 
 namespace DddStudy.Domain.Interfaces
 {
