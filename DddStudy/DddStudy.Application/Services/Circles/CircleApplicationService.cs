@@ -43,5 +43,29 @@ namespace DddStudy.Application.Services.Circles
 
             transaction.Complete();
         }
+
+        public void Join(CircleJoinCommand command)
+        {
+            using var transaction = new TransactionScope();
+
+            var memberId = new UserId(command.UserId);
+            var member = _userRepository.Find(memberId);
+            if (member == null)
+            {
+                throw new UserNotFoundException(memberId, "ユーザーが見つかりませんでした。");
+            }
+
+            var circleId = new CircleId(command.CircleId);
+            var circle = _circleRepository.Find(circleId);
+            if (circle == null)
+            {
+                throw new CircleNotFoundException(circleId, "サークルが見つかりませんでした。");
+            }
+
+            circle.Join(member);
+            _circleRepository.Save(circle);
+
+            transaction.Complete();
+        }
     }
 }

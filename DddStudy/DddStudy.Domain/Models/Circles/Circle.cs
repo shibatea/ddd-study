@@ -7,6 +7,8 @@ namespace DddStudy.Domain.Models.Circles
 {
     public class Circle : ValueObject<Circle>
     {
+        private readonly List<User> _members;
+
         public Circle(CircleId id, CircleName name, User owner, List<User> members)
         {
             if (id == null) throw new ArgumentNullException(nameof(id));
@@ -17,17 +19,28 @@ namespace DddStudy.Domain.Models.Circles
             Id = id;
             Name = name;
             Owner = owner;
-            Members = members;
+            _members = members;
         }
 
         public CircleId Id { get; }
         public CircleName Name { get; }
         public User Owner { get; }
-        public List<User> Members { get; }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Id;
+        }
+
+        public void Join(User member)
+        {
+            if (member == null) throw new ArgumentNullException(nameof(member));
+
+            if (_members.Count >= 29)
+            {
+                throw new CircleFullException(Id);
+            }
+
+            _members.Add(member);
         }
     }
 }
