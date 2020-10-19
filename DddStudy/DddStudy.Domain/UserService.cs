@@ -1,12 +1,11 @@
 ﻿using DddStudy.Domain.Interfaces;
-using DddStudy.Domain.Models;
 using DddStudy.Domain.Models.Users;
 
 namespace DddStudy.Domain
 {
     /// <summary>
-    /// Userドメインサービス
-    /// UserDomainモデルにあると不自然な振る舞いをこのサービスに定義する
+    ///     Userドメインサービス
+    ///     UserDomainモデルにあると不自然な振る舞いをこのサービスに定義する
     /// </summary>
     public class UserService
     {
