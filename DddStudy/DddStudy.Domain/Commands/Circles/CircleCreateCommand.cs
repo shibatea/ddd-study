@@ -1,4 +1,4 @@
-﻿namespace DddStudy.Domain.Commands
+﻿namespace DddStudy.Domain.Commands.Circles
 {
     public class CircleCreateCommand
     {

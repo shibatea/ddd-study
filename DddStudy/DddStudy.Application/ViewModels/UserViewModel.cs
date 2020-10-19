@@ -1,5 +1,4 @@
-﻿using DddStudy.Domain.Models;
-using DddStudy.Domain.Models.Users;
+﻿using DddStudy.Domain.Models.Users;
 
 namespace DddStudy.Application.ViewModels
 {

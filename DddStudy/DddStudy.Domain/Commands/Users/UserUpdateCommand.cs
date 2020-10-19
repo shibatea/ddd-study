@@ -1,4 +1,4 @@
-﻿namespace DddStudy.Domain.Commands
+﻿namespace DddStudy.Domain.Commands.Users
 {
     // Name, Address プロパティに setter が必要になるパターン
     // public class UserUpdateCommand

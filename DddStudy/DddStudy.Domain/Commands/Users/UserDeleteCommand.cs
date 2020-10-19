@@ -1,4 +1,4 @@
-﻿namespace DddStudy.Domain.Commands
+﻿namespace DddStudy.Domain.Commands.Users
 {
     public class UserDeleteCommand
     {
