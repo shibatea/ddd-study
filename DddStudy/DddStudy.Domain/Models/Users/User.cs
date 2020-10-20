@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DddStudy.Domain.Core.Models;
+using DddStudy.Domain.Interfaces;
 
 namespace DddStudy.Domain.Models.Users
 {

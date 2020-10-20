@@ -1,4 +1,5 @@
-﻿using DddStudy.Domain.Models.Circles;
+﻿using System.Collections.Generic;
+using DddStudy.Domain.Models.Circles;
 
 namespace DddStudy.Domain.Interfaces
 {
@@ -7,5 +8,6 @@ namespace DddStudy.Domain.Interfaces
         void Save(Circle circle);
         Circle Find(CircleId id);
         Circle Find(CircleName name);
+        List<Circle> Find(ISpecification<Circle> specification);
     }
 }

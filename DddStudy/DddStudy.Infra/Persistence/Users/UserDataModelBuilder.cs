@@ -1,4 +1,5 @@
-﻿using DddStudy.Domain.Models.Users;
+﻿using DddStudy.Domain.Interfaces;
+using DddStudy.Domain.Models.Users;
 using DddStudy.Infra.Persistence.DataModels;
 
 namespace DddStudy.Infra.Persistence.Users
