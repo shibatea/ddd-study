@@ -34,6 +34,13 @@ namespace DddStudy.Domain.Models.Users
             MailAddress = mailAddress ?? throw new ArgumentNullException(nameof(mailAddress));
         }
 
+        public void Notify(IUserNotification notification)
+        {
+            // 内部データを通知
+            notification.Id(Id);
+            notification.Name(Name);
+        }
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
             // エンティティなので UserId のみで識別する
