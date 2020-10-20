@@ -11,15 +11,10 @@ namespace DddStudy.Domain.Models.Circles
 
         public Circle(CircleId id, CircleName name, User owner, List<User> members)
         {
-            if (id == null) throw new ArgumentNullException(nameof(id));
-            if (name == null) throw new ArgumentNullException(nameof(name));
-            if (owner == null) throw new ArgumentNullException(nameof(owner));
-            if (members == null) throw new ArgumentNullException(nameof(members));
-
-            Id = id;
-            Name = name;
-            Owner = owner;
-            _members = members;
+            Id = id ?? throw new ArgumentNullException(nameof(id));
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Owner = owner ?? throw new ArgumentNullException(nameof(owner));
+            _members = members ?? throw new ArgumentNullException(nameof(members));
         }
 
         public CircleId Id { get; }
@@ -35,12 +30,14 @@ namespace DddStudy.Domain.Models.Circles
         {
             if (member == null) throw new ArgumentNullException(nameof(member));
 
-            if (_members.Count >= 29)
-            {
-                throw new CircleFullException(Id);
-            }
+            if (IsFull()) throw new CircleFullException(Id);
 
             _members.Add(member);
+        }
+
+        private bool IsFull()
+        {
+            return _members.Count >= 29;
         }
     }
 }
