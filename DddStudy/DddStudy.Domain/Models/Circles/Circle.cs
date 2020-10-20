@@ -29,14 +29,22 @@ namespace DddStudy.Domain.Models.Circles
         {
             if (user == null) throw new ArgumentNullException(nameof(user));
 
-            if (IsFull()) throw new CircleFullException(Id);
+            // サークル上限に関する仕様は CircleSpecification クラスに委譲したので、この処理は不要
+            // if (IsFull()) throw new CircleFullException(Id);
 
             Members.Add(user.Id);
         }
 
-        private bool IsFull()
+        // private bool IsFull()
+        // {
+        //     // サークルに所属するユーザーの最大数はオーナーを含めて30名まで
+        //     return CountMembers() >= 30;
+        // }
+
+        public int CountMembers()
         {
-            return Members.Count >= 29;
+            // メンバー数 + オーナー
+            return Members.Count + 1;
         }
     }
 }

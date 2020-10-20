@@ -48,18 +48,24 @@ namespace DddStudy.Application.Services.Circles
         {
             using var transaction = new TransactionScope();
 
-            var memberId = new UserId(command.UserId);
-            var member = _userRepository.Find(memberId);
-            if (member == null)
-            {
-                throw new UserNotFoundException(memberId, "ユーザーが見つかりませんでした。");
-            }
-
             var circleId = new CircleId(command.CircleId);
             var circle = _circleRepository.Find(circleId);
             if (circle == null)
             {
                 throw new CircleNotFoundException(circleId, "サークルが見つかりませんでした。");
+            }
+
+            var circleFullSpecification = new CircleFullSpecification(_userRepository);
+            if (circleFullSpecification.IsSatisfiedBy(circle))
+            {
+                throw new CircleFullException(circle.Id);
+            }
+
+            var memberId = new UserId(command.UserId);
+            var member = _userRepository.Find(memberId);
+            if (member == null)
+            {
+                throw new UserNotFoundException(memberId, "ユーザーが見つかりませんでした。");
             }
 
             circle.Join(member);

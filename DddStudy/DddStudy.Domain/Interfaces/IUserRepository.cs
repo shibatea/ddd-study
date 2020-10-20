@@ -1,4 +1,5 @@
-﻿using DddStudy.Domain.Models.Users;
+﻿using System.Collections.Generic;
+using DddStudy.Domain.Models.Users;
 
 namespace DddStudy.Domain.Interfaces
 {
@@ -8,5 +9,6 @@ namespace DddStudy.Domain.Interfaces
         User Find(UserName name);
         void Save(User user);
         void Delete(User user);
+        List<User> Find(List<UserId> circleMembers);
     }
 }

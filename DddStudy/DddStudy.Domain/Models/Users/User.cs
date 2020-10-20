@@ -23,6 +23,7 @@ namespace DddStudy.Domain.Models.Users
         public UserId Id { get; }
         public UserName Name { get; private set; }
         public MailAddress MailAddress { get; set; }
+        public bool IsPremium { get; internal set; }
 
         public void ChangeName(UserName name)
         {
