@@ -3,6 +3,7 @@ using DddStudy.Application.Exceptions;
 using DddStudy.Domain;
 using DddStudy.Domain.Commands.Circles;
 using DddStudy.Domain.Interfaces;
+using DddStudy.Domain.Models.CircleMembers;
 using DddStudy.Domain.Models.Circles;
 using DddStudy.Domain.Models.Users;
 
@@ -55,10 +56,22 @@ namespace DddStudy.Application.Services.Circles
                 throw new CircleNotFoundException(circleId, "サークルが見つかりませんでした。");
             }
 
-            var circleFullSpecification = new CircleFullSpecification(_userRepository);
-            if (circleFullSpecification.IsSatisfiedBy(circle))
+            // 複雑な仕様：対処方法その１
+            // var circleFullSpecification = new CircleFullSpecification(_userRepository);
+            // if (circleFullSpecification.IsSatisfiedBy(circle))
+            // {
+            //     throw new CircleFullException(circle.Id);
+            // }
+
+            // 複雑な仕様：対処方法その２
+            // ファーストコレクションクラスを利用する場合
+            var owner = _userRepository.Find(circle.Owner);
+            var members = _userRepository.Find(circle.Members);
+            var circleMembers = new CircleMembers(circle.Id, owner, members);
+            var circleMembersFullSpecification = new CircleMembersFullSpecification();
+            if (circleMembersFullSpecification.IsSatisfiedBy(circleMembers))
             {
-                throw new CircleFullException(circle.Id);
+                throw new CircleFullException(circleId);
             }
 
             var memberId = new UserId(command.UserId);

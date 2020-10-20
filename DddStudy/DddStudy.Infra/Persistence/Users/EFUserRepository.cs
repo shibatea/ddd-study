@@ -1,4 +1,5 @@
-﻿using DddStudy.Domain.Interfaces;
+﻿using System.Collections.Generic;
+using DddStudy.Domain.Interfaces;
 using DddStudy.Domain.Models.Users;
 using DddStudy.Infra.Contexts;
 
@@ -44,6 +45,11 @@ namespace DddStudy.Infra.Persistence.Users
         }
 
         public void Delete(User user)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<User> Find(List<UserId> circleMembers)
         {
             throw new System.NotImplementedException();
         }

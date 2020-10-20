@@ -7,7 +7,7 @@ namespace DddStudy.Domain.Models.Circles
 {
     public class Circle : ValueObject<Circle>
     {
-        public Circle(CircleId id, CircleName name, User owner, List<UserId> members)
+        public Circle(CircleId id, CircleName name, UserId owner, List<UserId> members)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id));
             Name = name ?? throw new ArgumentNullException(nameof(name));
@@ -17,7 +17,7 @@ namespace DddStudy.Domain.Models.Circles
 
         public CircleId Id { get; }
         public CircleName Name { get; }
-        public User Owner { get; }
+        public UserId Owner { get; }
         public List<UserId> Members { get; }
 
         protected override IEnumerable<object> GetEqualityComponents()
