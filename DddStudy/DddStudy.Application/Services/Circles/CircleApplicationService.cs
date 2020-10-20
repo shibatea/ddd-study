@@ -65,6 +65,7 @@ namespace DddStudy.Application.Services.Circles
 
             // 複雑な仕様：対処方法その２
             // ファーストコレクションクラスを利用する場合
+            // ドメインオブジェクトで userRepository を使わずに済む（入出力をドメインオブジェクトから排除できた）
             var owner = _userRepository.Find(circle.Owner);
             var members = _userRepository.Find(circle.Members);
             var circleMembers = new CircleMembers(circle.Id, owner, members);
